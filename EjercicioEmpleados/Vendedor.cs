@@ -9,9 +9,9 @@ namespace EjercicioEmpleados
     public class Vendedor : Empleado{
         public string Codigo { get; set; }
 
-        public override void marcarIngreso()
+        public override string marcarIngreso()
         {
-            //Marca entrada con su codigo de vendedor
+            return $"Vendedor marca su ingreso en la tarjeta a las: {DateTime.Now}";
         }
 
         public override string ToString()
@@ -24,9 +24,10 @@ namespace EjercicioEmpleados
     public class Reponedor : Empleado{
         public string Credencial { get; set; }
 
-        public override void marcarIngreso()
+        public override string marcarIngreso()
         {
             //Marca en el reloj con su credencial
+            return "";
         }
 
         public override string ToString()
@@ -37,9 +38,11 @@ namespace EjercicioEmpleados
     public class Contratista : Empleado{
         public string Contrato { get; set; }
 
-        public override void marcarIngreso()
+        public override string marcarIngreso()
         {
-           //marca si ingreso firmando el libro
+            //marca si ingreso firmando el libro
+            return "";
+
         }
         public override string firmarContrato()
         {

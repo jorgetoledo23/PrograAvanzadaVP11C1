@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EjercicioEmpleados
+﻿namespace EjercicioEmpleados
 {
     public abstract class Empleado
     {
@@ -14,14 +8,10 @@ namespace EjercicioEmpleados
         public string Correo { get; set; }
         public string Telefono { get; set; }
 
-        public override string ToString()
-        {
-            return $"Rut: {Rut}, Nombre: {Nombre} {Apellido}";
-        }
-        public abstract void marcarIngreso();
-        public virtual string firmarContrato()
-        {
-            return "Firma contrato DIGITAL";
-        }
+        public override string ToString() => $"Rut: {Rut}, Nombre: {Nombre} {Apellido}";
+        public abstract string marcarIngreso();
+        public virtual string firmarContrato() => "Firma contrato DIGITAL";
+        public string MarcarSalida() => $"Empleado Rut: {Rut}, Marca Salida: {DateTime.Now}";
+        
     }
 }
