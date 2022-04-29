@@ -9,7 +9,9 @@ namespace DesktopApp
 
         private void MenuItemVerEmpleados_Click(object sender, EventArgs e)
         {
-           //Mostrar Empleados 
+            //Mostrar Empleados 
+            VerEmpleados verEmp = new VerEmpleados();
+            verEmp.ShowDialog();
         }
 
         private void MenuItemAgregarEmpleado_Click(object sender, EventArgs e)
