@@ -1,4 +1,5 @@
 ﻿using API.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Free")]
     public class DepartamentoController : ControllerBase
     {
         private readonly APIDbContext _context;
@@ -16,6 +18,7 @@ namespace API.Controllers
 
         [Route("GetAllDepartments")]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<List<Departamento>> GetAllDepartments()
         {
             var AllDepartments = _context.Departamentos.ToList();
