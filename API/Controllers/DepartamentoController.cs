@@ -18,7 +18,7 @@ namespace API.Controllers
 
         [Route("GetAllDepartments")]
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Pro")]
         public ActionResult<List<Departamento>> GetAllDepartments()
         {
             var AllDepartments = _context.Departamentos.ToList();

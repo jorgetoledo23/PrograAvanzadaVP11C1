@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2 class="display-4 m-3">Welcome to Me Apunto!</h2>
+    <div class="row justify-content-evenly">
+        <div class="col-md-4">
+        <div class="card" style="height:263px;">
+              <i class="App-logo fa-solid fa-location-arrow mt-3" style="font-size: 5rem; color: black;"></i>
+              <div class="card-body">
+                <h5 class="card-title">Administracion de Lugares</h5>
+                <p class="card-text">Agrega, edita o elimina nuevos lugares para la gestion de los Eventos</p>
+                <a asp-controller="Lugar" asp-action="Index" class="btn btn-outline-danger col-12">Ir</a>
+              </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card" style="height:263px;">
+              <i class="App-logo fa-solid fa-people-group mt-3" style="font-size: 5rem; color: black;"></i>
+              <div class="card-body">
+                <h5 class="card-title">Administracion de Categorias</h5>
+                <p class="card-text">Agrega, edita o elimina nuevas Categorias para la gestion de Eventos</p>
+                <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-success col-12">Ir</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+
+
+</div>
