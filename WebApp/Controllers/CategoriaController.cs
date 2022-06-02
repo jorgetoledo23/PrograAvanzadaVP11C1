@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
+    //[Authorize(Roles = "Administrador")]
     public class CategoriaController : Controller
     {
         private readonly AppDbContext _context;
@@ -67,6 +69,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Categoria/Edit/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.tblCategorias == null)
@@ -87,6 +90,7 @@ namespace WebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Categoria categoria)
         {
             if (id != categoria.Id)
@@ -118,6 +122,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Categoria/Delete/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.tblCategorias == null)
@@ -138,6 +143,7 @@ namespace WebApp.Controllers
         // POST: Categoria/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador, Gestion")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.tblCategorias == null)

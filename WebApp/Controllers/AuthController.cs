@@ -98,8 +98,8 @@ namespace WebApp.Controllers
 
                     return View(pvm);
                 }
-                return View();
-                //return RedirectToAction(nameof(LoginIn));
+                //return View();
+                return RedirectToAction(nameof(LoginIn));
             }
 
 
