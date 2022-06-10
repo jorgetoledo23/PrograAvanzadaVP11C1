@@ -1,37 +1,41 @@
 ﻿@model WebApp.Models.Categoria
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Crear Categoria";
 }
 
-<h1>Create</h1>
-
-<h4>Categoria</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="card text-center">
+    <div class="card-header">
+        Creacion de Categorias
+    </div>
+    <div class="card-body">
+        <a asp-action="Index"
+           class="btn btn-outline-primary"><i class="fa-solid fa-users me-2"></i>Volver a la Administracion</a>
     </div>
 </div>
+<div class="row m-5">
+    <div class="col-md-12">
+        <form class="row justify-content-center" asp-action="Create" method="post">
 
-<div>
-    <a asp-action="Index">Back to List</a>
+            <div class="col-md-3">
+                <div class="form-group m-2">
+                    <input asp-for="Name" class="form-control" placeholder="Nombre" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group m-2">
+                    <input asp-for="Description" class="form-control" placeholder="Descripcion" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input type="submit" value="Crear Categoria" class="btn btn-primary col-12" />
+                </div>
+            </div>
+
+        </form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
 </div>
 
 @section Scripts {

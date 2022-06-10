@@ -1,15 +1,19 @@
 ﻿@model IEnumerable<WebApp.Models.Categoria>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Administracion de Categorias";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="card text-center">
+    <div class="card-header">
+        Administracion de Categorias
+    </div>
+    <div class="card-body">
+        <a asp-action="Create"
+           class="btn btn-outline-primary"><i class="fa-solid fa-users me-2"></i>Crear Nuevo Lugar</a>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -32,9 +36,8 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Update" asp-route-LugarId="@item.Id" ><i class="fa-solid fa-pen-to-square me-2"></i></a>
+                <a><i class="fa-solid fa-trash me-2"></i></a>
             </td>
         </tr>
 }

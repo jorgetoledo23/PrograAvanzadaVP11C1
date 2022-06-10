@@ -24,8 +24,6 @@ namespace WebApp.Controllers
                 return View();
             }
 
-
-
             public async Task<IActionResult> LoginIn()
             {
                 return View();
@@ -42,7 +40,7 @@ namespace WebApp.Controllers
                     //Crear al SuperUser
                     U.Name = "admin";
                     U.Email = "admin@dominio.com";
-                    U.Rol = "Administrador";
+                    U.Rol = "SuperAdministrador";
                     U.Username = "admin";
                     CreatePasswordHash("admin", out byte[] passwordHash, out byte[] passworSalt);
                     U.PasswordHash = passwordHash;
@@ -81,7 +79,7 @@ namespace WebApp.Controllers
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                                 principal,
                                 new AuthenticationProperties { IsPersistent = true });
-                        return RedirectToAction(nameof(Profile));
+                        return RedirectToAction("Index","Home");
                     }
                 }
             }
@@ -103,9 +101,13 @@ namespace WebApp.Controllers
             }
 
 
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction(nameof(Profile));
+        }
 
-
-            private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
             {
                 using (var hmac = new HMACSHA512())
                 {

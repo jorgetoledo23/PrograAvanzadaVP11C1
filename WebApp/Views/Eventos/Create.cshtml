@@ -1,8 +1,12 @@
-﻿@model Lugar
+﻿@model WebApp.Models.Evento
+
+@{
+    ViewData["Title"] = "Crear Evento";
+}
 
 <div class="card text-center">
     <div class="card-header">
-        Creacion de Lugares
+        Creacion de Eventos
     </div>
     <div class="card-body">
         <a asp-action="Index"
@@ -12,24 +16,36 @@
 <div class="row m-5">
     <div class="col-md-12">
         <form class="row justify-content-center" asp-action="Create" method="post">
-
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group m-2">
                     <input asp-for="Name" class="form-control" placeholder="Nombre" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
+                <div class="form-group m-2">
+                    <select asp-for="LugarId" class="form-select" asp-items="ViewBag.Lug"></select>
+                    <span asp-validation-for="LugarId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group m-2">
                     <input asp-for="Description" class="form-control" placeholder="Descripcion" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group m-2">
-                    <input type="submit" value="Crear Lugar" class="btn btn-primary col-12" />
+                    <select asp-for="CategoriaId" class="form-select" asp-items="ViewBag.Cat"></select>
+                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input type="submit" value="Crear Evento" class="btn btn-primary col-12" />
                 </div>
             </div>
-
         </form>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

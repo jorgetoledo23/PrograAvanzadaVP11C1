@@ -1,8 +1,14 @@
 ﻿@model ICollection<Lugar>
 
-<h2>Listado de Lugares</h2>
-<hr />
-<a asp-action="Create" class="btn btn-outline-danger">Crear Nuevo Lugar</a>
+<div class="card text-center">
+    <div class="card-header">
+        Administracion de Lugares
+    </div>
+    <div class="card-body">
+        <a asp-action="Create"
+           class="btn btn-outline-primary"><i class="fa-solid fa-users me-2"></i>Crear Nuevo Lugar</a>
+    </div>
+</div>
 <div class="mt-3">
     <table class=" table table-striped">
 

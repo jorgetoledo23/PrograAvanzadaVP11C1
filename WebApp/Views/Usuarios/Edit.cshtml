@@ -1,0 +1,67 @@
+﻿@using WebApp.ViewModel
+@model UsuarioRegistroViewModel
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<div class="card text-center">
+    <div class="card-header">
+        Editar Usuario <strong>@Model.Name</strong>
+    </div>
+    <div class="card-body">
+        <a asp-action="Index"
+           class="btn btn-outline-primary"><i class="fa-solid fa-users me-2"></i>Volver a la Administracion</a>
+    </div>
+</div>
+<div class="row m-5">
+    <div class="col-md-12">
+        <form class="row justify-content-center" asp-action="Edit" method="post">
+            <input asp-for="Id" type="hidden" value="@Model.Id" />
+            <div class="col-md-4">
+                <div class="form-group m-2">
+                    <input asp-for="Name" class="form-control" placeholder="Nombre" value="@Model.Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input asp-for="Email" class="form-control" placeholder="Email" value="@Model.Email"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group m-2">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group m-2">
+                    <input asp-for="Username" class="form-control" placeholder="Username" value="@Model.Username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                                @if(Model.Rol != "SuperAdministrador")
+                {
+                    <div class="form-group m-2">
+                    <input asp-for="Rol" class="form-control" placeholder="Rol" value="@Model.Rol" />
+                    <span asp-validation-for="Rol" class="text-danger"></span>
+                    </div>
+                }
+                else
+                {
+                  <div class="form-group m-2">
+                    <input asp-for="Rol" class="form-control" placeholder="Rol" value="@Model.Rol" disabled/>
+                    <span asp-validation-for="Rol" class="text-danger"></span>
+                    </div>  
+                }
+                <div class="form-group m-2">
+                    <input type="submit" value="Guardar Usuario" class="btn btn-primary col-12" />
+                </div>
+            </div>
+        </form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

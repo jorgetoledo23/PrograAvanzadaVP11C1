@@ -1,36 +1,90 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
+    bool esAdmin = false;
+    foreach(var claim in User.Claims)
+    {
+        if(claim.Value == "SuperAdministrador" || claim.Value == "Administrador")
+        {
+            esAdmin = true;
+        }
+    }
 }
 
 <div class="text-center">
     <h2 class="display-4 m-3">Welcome to Me Apunto!</h2>
     <div class="row justify-content-evenly">
         <div class="col-md-4">
-        <div class="card" style="height:263px;">
-              <i class="App-logo fa-solid fa-location-arrow mt-3" style="font-size: 5rem; color: black;"></i>
-              <div class="card-body">
-                <h5 class="card-title">Administracion de Lugares</h5>
-                <p class="card-text">Agrega, edita o elimina nuevos lugares para la gestion de los Eventos</p>
-                <a asp-controller="Lugar" asp-action="Index" class="btn btn-outline-danger col-12">Ir</a>
-              </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="card">
             <div class="card" style="height:263px;">
-              <i class="App-logo fa-solid fa-people-group mt-3" style="font-size: 5rem; color: black;"></i>
-              <div class="card-body">
-                <h5 class="card-title">Administracion de Categorias</h5>
-                <p class="card-text">Agrega, edita o elimina nuevas Categorias para la gestion de Eventos</p>
-                <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-success col-12">Ir</a>
-              </div>
+                <i class="App-logo fa-solid fa-location-arrow mt-3" style="font-size: 5rem; color: black;"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Administracion de Lugares</h5>
+                    <p class="card-text">Agrega, edita o elimina nuevos lugares para la gestion de los Eventos</p>
+                    <a asp-controller="Lugar" asp-action="Index" class="btn btn-outline-danger col-12">Ir a la Administracion</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-    
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card" style="height:263px;">
+                    <i class="App-logo fa-solid fa-people-group mt-3" style="font-size: 5rem; color: black;"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Administracion de Categorias</h5>
+                        <p class="card-text">Agrega, edita o elimina nuevas Categorias para la gestion de Eventos</p>
+                        <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-success col-12">Ir a la Administracion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row justify-content-evenly mt-3">
+        <div class="col-md-4">
+            <div class="card" style="height:263px;">
+                <i class="App-logo fa-solid fa-location-arrow mt-3" style="font-size: 5rem; color: black;"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Administracion de Eventos</h5>
+                    <p class="card-text">Agrega, edita o elimina nuevos lugares para la gestion de los Eventos</p>
+                    <a asp-controller="Eventos" asp-action="Index" class="btn btn-outline-primary col-12">Ir a la Administracion</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card" style="height:263px;">
+                    <i class="App-logo fa-solid fa-people-group mt-3" style="font-size: 5rem; color: black;"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Administracion de Usuarios</h5>
+                        <p class="card-text">Agrega, edita o elimina nuevas Categorias para la gestion de Eventos</p>
+                        @if(esAdmin == true)
+                        {
+                            <a asp-controller="Usuarios" asp-action="Index" class="btn btn-outline-warning col-12">Ir a la Administracion</a>
+                        }
+                        else{
+                            <a asp-controller="Usuarios" asp-action="Index" class="btn btn-outline-warning col-12 disabled">No Tienes Acceso a esta Funcion</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card" style="height:263px;">
+                    <i class="App-logo fa-solid fa-people-group mt-3" style="font-size: 5rem; color: black;"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Log Out</h5>
+                        <p class="card-text"></p>
+                        <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-secondary col-12">Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
 
 
 </div>

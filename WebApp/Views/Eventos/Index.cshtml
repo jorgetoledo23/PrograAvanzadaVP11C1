@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Evento>
+
+@{
+    ViewData["Title"] = "Administracion de Eventos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-center">
+    <div class="card-header">
+        Administracion de Evento
+    </div>
+    <div class="card-body">
+        <a asp-action="Create"
+           class="btn btn-outline-primary"><i class="fa-solid fa-users me-2"></i>Crear Nuevo Evento</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lugar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Lugar.Name)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-EventoId="@item.Id" ><i class="fa-solid fa-pen-to-square me-2"></i></a>
+                <a><i class="fa-solid fa-trash me-2"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
