@@ -100,6 +100,10 @@ namespace WebApp.Controllers
                 return RedirectToAction(nameof(LoginIn));
             }
 
+        public async Task<IActionResult> AccessDenied()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> LogOut()
         {

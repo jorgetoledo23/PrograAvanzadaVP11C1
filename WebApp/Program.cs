@@ -11,7 +11,12 @@ builder.Services.AddDbContext<AppDbContext>();
 
 //Login
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie("Cookies");
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Auth/LoginIn";
+        options.LogoutPath = "/Auth/Logout";
+        options.AccessDeniedPath = "/Auth/AccessDenied";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
