@@ -11,8 +11,14 @@
 </div>
 <div class="mt-3">
     <table class=" table table-striped">
-
         <thead>
+            <tr class="text-center">
+                <th colspan="4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalOrdenar">
+                        Ordenar
+                    </button>
+                </th>
+            </tr>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
@@ -20,7 +26,6 @@
                 <th></th>
             </tr>
         </thead>
-
         <tbody>
             @foreach(var item in Model)
             {
@@ -36,7 +41,25 @@
                 </tr>
             }
         </tbody>
-
-
     </table>
+</div>
+
+<!-- Modal Ordenar-->
+<div class="modal fade" id="modalOrdenar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Seleccione...</h5>
+         </div>
+      <div class="modal-body">
+          <form asp-action="Index" method="get">
+              <select name="OrdenarPor" class="form-select">
+                <option class="p-1" value="Id">Id</option>
+                <option class="p-1" value="Nombre">Nombre</option>
+              </select>
+              <button type="submit" class="btn btn-outline-danger col-12 mt-2">Ordenar</button>
+          </form>  
+      </div>
+    </div>
+  </div>
 </div>

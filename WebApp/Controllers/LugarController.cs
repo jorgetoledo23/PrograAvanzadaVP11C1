@@ -11,9 +11,21 @@ namespace WebApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string OrdenarPor)
         {
-            var Lugares = _context.tblLugares.ToList();
+            List<Lugar> Lugares = new List<Lugar>();
+            if (OrdenarPor == null)
+            {
+                Lugares = _context.tblLugares.ToList();
+            }
+            else if(OrdenarPor == "Id")
+            {
+                Lugares = _context.tblLugares.OrderByDescending(x => x.Id).ToList();
+            }else if( OrdenarPor == "Nombre")
+            {
+                Lugares = _context.tblLugares.OrderByDescending(x => x.Name).ToList();
+            }
+             
             return View(Lugares);
         }
 
